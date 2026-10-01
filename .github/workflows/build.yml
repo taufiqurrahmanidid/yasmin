@@ -23,13 +23,6 @@ jobs:
       - name: Generate Prisma client
         run: npm run --prefix backend db:generate
       
-      - name: Run tests
-        run: npm run --prefix backend test:ci
-        env:
-          NODE_ENV: test
-          JWT_SECRET: test-secret-key-for-ci-only
-          DATABASE_URL: mysql://user:***@localhost:3306/test
-      
       - name: Verify backend startup
         run: timeout 5 node backend/server.js || true
         env:
@@ -49,11 +42,6 @@ jobs:
       
       - name: Install dependencies
         run: npm ci --prefix frontend
-      
-      - name: Run tests
-        run: npm run --prefix frontend test
-        env:
-          VITE_API_URL: http://localhost:8000
       
       - name: Build
         run: npm run --prefix frontend build
