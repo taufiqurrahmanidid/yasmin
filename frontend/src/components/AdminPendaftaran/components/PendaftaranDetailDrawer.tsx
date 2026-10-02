@@ -103,7 +103,7 @@ Nomor Antri : *( ${noAntrian} )*
 👉 *${kodeBooking}*
 
 Silakan buka Barcode Check-In Anda melalui Portal Pasien:
-🔗 http://localhost:3000/pasien
+🔗 https://yasminhospital.dinamixnet.id/pasien
 
 _Mohon hadir 30 menit sebelum jam praktek untuk konfirmasi check-in di loket / mesin antrean mandiri RS Yasmin._`;
 

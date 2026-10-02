@@ -4,9 +4,9 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
   'http://localhost:8080',
-  // Add your production domains here
-  // 'https://rsyasmin.id',
-  // 'https://www.rsyasmin.id',
+  'https://yasminhospital.dinamixnet.id',
+  'https://www.yasminhospital.dinamixnet.id',
+  'https://api.yasminhospital.dinamixnet.id'
 ];
 
 const corsMiddleware = cors({
