@@ -41,6 +41,8 @@ import { fetchCollection, syncCollectionToCloud, saveDocument, db } from './lib/
 import { submitPendaftaran } from './lib/api';
 import PatientRegistrationWizard from './components/PatientRegistrationWizard';
 import PatientPortalDashboard from './components/PatientPortalDashboard';
+import QueueStaffPanel from './pages/QueueStaff';
+import QueueDisplay from './pages/QueueDisplay';
 
 const SERVICE_TYPE_LABELS: Record<string, Record<'ID' | 'EN' | 'KR' | 'ZH' | 'AR', string>> = {
   "Poli Spesialis / Umum": {
@@ -1318,6 +1320,16 @@ export default function App() {
         onComplete={() => { window.location.href = '/'; }} 
       />
     );
+  }
+  
+  // =========================================================================
+  // QUEUE MANAGEMENT SYSTEM ROUTES
+  // =========================================================================
+  if (currentPath === '/queue/staff') {
+    return <QueueStaffPanel />;
+  }
+  if (currentPath === '/queue/display') {
+    return <QueueDisplay />;
   }
   
   // =========================================================================
