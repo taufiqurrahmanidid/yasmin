@@ -200,3 +200,17 @@ model Article {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model QueueLog {
+  id              String   @id @default(uuid())
+  pendaftaranId   String   // FK to Pendaftaran.id
+  polyclinic      String   // Nama poli
+  queueNumber     String   // ANK-030
+  status          String   @default("waiting") // waiting, called, serving, completed, skipped
+  calledAt        DateTime?
+  completedAt     DateTime?
+  calledBy        String?  // AdminUser email
+  loketNumber     String?  // Loket 1, 2, 3
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
