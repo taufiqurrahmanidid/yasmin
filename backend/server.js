@@ -693,6 +693,12 @@ app.post('/api/sync/:collection', async (req, res) => res.json({ success: true }
 app.post('/api/save/:collection/:id', async (req, res) => res.json({ success: true }));
 
 // =========================================================================
+// QUEUE MANAGEMENT SYSTEM
+// =========================================================================
+const queueRoutes = require('./routes/queue');
+app.use('/api/queue', queueRoutes);
+
+// =========================================================================
 // JALANKAN SERVER
 // =========================================================================
 const PORT = process.env.PORT || 8000;
