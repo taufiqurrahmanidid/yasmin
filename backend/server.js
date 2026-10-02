@@ -390,6 +390,25 @@ app.patch('/api/pendaftaran/:id/status', authenticateAdmin, async (req, res) => 
         }
 
         const updated = await prisma.pendaftaran.update({ where: { id }, data: updateData });
+        
+        // Auto-create QueueLog when diverifikasi with antrian
+        if ((status === 'diverifikasi' || status === 'dijadwalkan') && updateData.antrian) {
+          try {
+            await prisma.queueLog.create({
+              data: {
+                pendaftaranId: id,
+                polyclinic: currentItem.selectedPoli,
+                queueNumber: updateData.antrian,
+                status: 'waiting',
+                loketNumber: null
+              }
+            });
+            console.log(`[QUEUE] Created QueueLog for ${id}: ${updateData.antrian}`);
+          } catch (qErr) {
+            console.error('[QUEUE CREATE ERROR]:', qErr.message);
+          }
+        }
+        
         io.emit('DASHBOARD_UPDATED');
         res.json({ success: true, item: updated });
     } catch (err) { 
